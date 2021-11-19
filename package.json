@@ -1,0 +1,1012 @@
+{
+  "publisher": "luoqiang0831",
+  "name": "jenkins-deploy",
+  "displayName": "Jenkins deploy",
+  "description": "为公司定制开发的Jenkins 发布流程，简化Jenkins管理和发布让开发者在不打断编码的同时支持项目编译发布，本项目借鉴与Jenkins Jack",
+  "icon": "images/logo.png",
+  "homepage": "https://github.com/luoqiang0831/jenkins-deploy/master/README.md",
+  "version": "1.1.0",
+  "license": "See LICENSE.md",
+  "galleryBanner": {
+    "color": "#215aa8",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.43.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luoqiang0831/jenkins-deploy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/luoqiang0831/jenkins-deploy/issues"
+  },
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "jenkins-deploy",
+          "title": "Jenkins Deploy",
+          "icon": "images/jenkins_bow_icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "jenkins-deploy": [
+        {
+          "id": "connectionsTree",
+          "name": "Jenkins 服务连接"
+        },
+        {
+          "id": "jobTree",
+          "name": "应用列表"
+        },
+        {
+          "id": "historyTree",
+          "name": "构建记录"
+        },
+        {
+          "id": "historyBuildTree",
+          "name": "最近构建"
+        },
+        {
+          "id": "nodeTree",
+          "name": "构建节点"
+        }
+      ]
+    },
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "extension.jenkins-jack.tree.connections.refresh",
+          "when": "never"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.pipeline.refresh",
+          "when": "never"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.pipeline.openScript",
+          "when": "never"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.pipeline.pullJobScript",
+          "when": "never"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.pipeline.pullReplayScript",
+          "when": "never"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.pipeline.removeLink",
+          "when": "never"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.pipeline.addLink",
+          "when": "never"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.job.refresh",
+          "when": "never"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.history.refresh",
+          "when": "never"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.historyBuild.refresh",
+          "when": "never"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.node.refresh",
+          "when": "never"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "extension.jenkins-jack.connections.add",
+          "when": "view == connectionsTree",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.connections.settings",
+          "when": "view == connectionsTree",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.connections.refresh",
+          "when": "view == connectionsTree",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.pipeline.refresh",
+          "when": "view == pipelineTree",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.pipeline.create",
+          "when": "view == pipelineTree",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.job.refresh",
+          "when": "view == jobTree",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.history.refresh",
+          "when": "view == historyTree",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.historyBuild.refresh",
+          "when": "view == historyBuildTree",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.history.add",
+          "when": "view == historyTree",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.node.refresh",
+          "when": "view == nodeTree",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "extension.jenkins-jack.connections.select",
+          "when": "view == connectionsTree && viewItem == connectionsTreeItemInactive",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.connections.delete",
+          "when": "view == connectionsTree",
+          "group": "action"
+        },
+        {
+          "command": "extension.jenkins-jack.connections.edit",
+          "when": "view == connectionsTree",
+          "group": "action"
+        },
+        {
+          "command": "extension.jenkins-jack.pipeline.execute",
+          "when": "view == pipelineTree && viewItem == pipeline-linked",
+          "group": "inline"
+        },
+        {
+          "command": "extension.jenkins-jack.pipeline.execute",
+          "when": "view == pipelineTree && viewItem == pipeline-linked",
+          "group": "action"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.pipeline.openScript",
+          "when": "view == pipelineTree && viewItem == pipeline-linked",
+          "group": "inline"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.pipeline.openScript",
+          "when": "view == pipelineTree && viewItem == pipeline-linked",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.pipeline.openScriptConfig",
+          "when": "view == pipelineTree && viewItem == pipeline-linked",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.pipeline.pullJobScript",
+          "when": "view == pipelineTree",
+          "group": "action"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.pipeline.pullReplayScript",
+          "when": "view == pipelineTree",
+          "group": "action"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.pipeline.addLink",
+          "when": "view == pipelineTree && viewItem == pipeline",
+          "group": "modification"
+        },
+        {
+          "command": "extension.jenkins-jack.tree.pipeline.removeLink",
+          "when": "view == pipelineTree && viewItem == pipeline-linked",
+          "group": "modification"
+        },
+        {
+          "command": "extension.jenkins-jack.history.open",
+          "when": "view == historyTree && viewItem =~ /history/",
+          "group": "inline"
+        },
+        {
+          "command": "extension.jenkins-jack.history.open",
+          "when": "view == historyTree && viewItem =~ /history/",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.history.moveup",
+          "when": "view == historyTree && viewItem =~ /history/",
+          "group": "inline"
+        },
+        {
+          "command": "extension.jenkins-jack.history.movedown",
+          "when": "view == historyTree && viewItem =~ /history/",
+          "group": "inline"
+        },
+        {
+          "command": "extension.jenkins-jack.history.delete",
+          "when": "view == historyTree && viewItem =~ /history/",
+          "group": "modification"
+        },
+        {
+          "command": "extension.jenkins-jack.historyBuild.open",
+          "when": "view == historyBuildTree",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.historyBuild.delete",
+          "when": "view == historyBuildTree",
+          "group": "modification"
+        },
+        {
+          "command": "extension.jenkins-jack.historyBuild.build",
+          "when": "view == historyBuildTree",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.job.open",
+          "when": "view == jobTree && viewItem =~ /job/",
+          "group": "inline"
+        },
+        {
+          "command": "extension.jenkins-jack.job.open",
+          "when": "view == jobTree && viewItem =~ /job/",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.job.build",
+          "when": "view == jobTree && viewItem =~ /job/",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.job.addHistory",
+          "when": "view == jobTree && viewItem != job-disabled",
+          "group": "modification"
+        },
+        {
+          "command": "extension.jenkins-jack.job.enable",
+          "when": "view == jobTree && viewItem == job-disabled",
+          "group": "modification"
+        },
+        {
+          "command": "extension.jenkins-jack.build.open",
+          "when": "view == jobTree && viewItem =~ /build/",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.build.open",
+          "when": "view == jobTree && viewItem =~ /build/",
+          "group": "inline"
+        },
+        {
+          "command": "extension.jenkins-jack.build.abort",
+          "when": "view == jobTree && viewItem =~ /inprogress/",
+          "group": "action"
+        },
+        {
+          "command": "extension.jenkins-jack.build.delete",
+          "when": "viewItem =~ /build/",
+          "group": "modification"
+        },
+        {
+          "command": "extension.jenkins-jack.build.quickBuild",
+          "when": "view == jobTree && viewItem =~ /build/",
+          "group": "modification"
+        },
+        {
+          "command": "extension.jenkins-jack.build.downloadLog",
+          "when": "view == jobTree && viewItem =~ /build/",
+          "group": "action"
+        },
+        {
+          "command": "extension.jenkins-jack.build.downloadLog",
+          "when": "view == jobTree && viewItem =~ /build/",
+          "group": "inline"
+        },
+        {
+          "command": "extension.jenkins-jack.build.downloadReplayScript",
+          "when": "view == jobTree && viewItem =~ /pipeline/",
+          "group": "action"
+        },
+        {
+          "command": "extension.jenkins-jack.build.open",
+          "when": "view == historyTree && viewItem =~ /build/",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.build.branch",
+          "when": "view == historyTree && viewItem =~ /build/",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.build.open",
+          "when": "view == historyTree && viewItem =~ /build/",
+          "group": "inline"
+        },
+        {
+          "command": "extension.jenkins-jack.build.open",
+          "when": "view == historyBuildTree && viewItem =~ /build/",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.build.branch",
+          "when": "view == historyBuildTree && viewItem =~ /build/",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.build.open",
+          "when": "view == historyBuildTree && viewItem =~ /build/",
+          "group": "inline"
+        },
+        {
+          "command": "extension.jenkins-jack.node.open",
+          "when": "view == nodeTree && viewItem =~ /node/",
+          "group": "inline"
+        },
+        {
+          "command": "extension.jenkins-jack.node.open",
+          "when": "view == nodeTree && viewItem =~ /node/",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.jenkins-jack.node.setOffline",
+          "when": "view == nodeTree && viewItem == node",
+          "group": "modification"
+        },
+        {
+          "command": "extension.jenkins-jack.node.setOnline",
+          "when": "view == nodeTree && viewItem != node",
+          "group": "modification"
+        },
+        {
+          "command": "extension.jenkins-jack.node.disconnect",
+          "when": "view == nodeTree && viewItem =~ /node/ && viewItem != node-disconnected",
+          "group": "modification"
+        },
+        {
+          "command": "extension.jenkins-jack.node.updateLabels",
+          "when": "view == nodeTree && viewItem =~ /node/",
+          "group": "action"
+        },
+        {
+          "command": "extension.jenkins-jack.scriptConsole.execute",
+          "when": "view == nodeTree && viewItem != node-disconnected",
+          "group": "action"
+        }
+      ]
+    },
+    "configuration": [
+      {
+        "title": "Jenkins Jack configuration",
+        "type": "object",
+        "properties": {
+          "jenkins-jack.outputView.suppressPipelineLog": {
+            "type": "boolean",
+            "default": false,
+            "markdownDescription": "If enabled, hides `[Pipeline]` log lines in streamed output."
+          },
+          "jenkins-jack.outputView.type": {
+            "type": "string",
+            "default": "channel",
+            "enum": [
+              "channel",
+              "panel"
+            ],
+            "enumDescriptions": [
+              "Output is streamed to the OUTPUT channel provided by vscode.",
+              "Streams output to a read-only editor window."
+            ],
+            "markdownDescription": "The output view for streamed logs"
+          },
+          "jenkins-jack.outputView.panel.defaultViewColumn": {
+            "type": "string",
+            "default": "Beside",
+            "enum": [
+              "Beside",
+              "Active",
+              "One",
+              "Two",
+              "Three",
+              "Four",
+              "Five",
+              "Six",
+              "Seven",
+              "Eight",
+              "Nine"
+            ],
+            "markdownDescription": "The default view column (location) in vscode the output panel will spawn on show. See https://code.visualstudio.com/api/references/vscode-api#ViewColumn"
+          },
+          "jenkins-jack.jenkins.connections": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "default": ""
+                },
+                "uri": {
+                  "type": "string",
+                  "default": "http://127.0.0.1:8080",
+                  "description": "The Jenkins root uri"
+                },
+                "username": {
+                  "type": "string",
+                  "default": "",
+                  "description": "Username for authentication with Jenkins"
+                },
+                "password": {
+                  "type": "string",
+                  "default": "",
+                  "markdownDescription": "Password or API token to login to jenkins. Token can be found here: `[jenkins_url]/user/[username]/configure`"
+                },
+                "active": {
+                  "type": "boolean",
+                  "default": false,
+                  "markdownDescription": "Flag indicating if this host connection is targeted for use."
+                }
+              }
+            },
+            "default": [],
+            "markdownDescription": "List of jenkins connections (uri, username, and password) to target when running commands"
+          },
+          "jenkins-jack.project.list": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            },
+            "default": [],
+            "markdownDescription": "设置Jenkins 项目列表"
+          },
+          "jenkins-jack.historyProject.list": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            },
+            "default": [],
+            "markdownDescription": "保存Jenkins 最近构建的项目列表"
+          },
+          "jenkins-jack.jenkins.strictTls": {
+            "type": "boolean",
+            "default": false,
+            "markdownDescription": "If unchecked, the extension will **not** check certificate validity when connecting through HTTPS"
+          },
+          "jenkins-jack.pipeline.params.enabled": {
+            "type": "boolean",
+            "default": true,
+            "markdownDescription": "Enables the use of parameters (stored in '.myfile.config.json') to be used in your Pipeline execution"
+          },
+          "jenkins-jack.pipeline.params.interactiveInput": {
+            "type": "boolean",
+            "default": false,
+            "markdownDescription": "If true, will grab parameters from the remote jenkins job and prompt user for builder parameter input using input boxes and quick picks."
+          },
+          "jenkins-jack.pipeline.browserBuildOutput": {
+            "type": "boolean",
+            "default": false,
+            "markdownDescription": "Show build output via browser instead of the `OUTPUT` channel"
+          },
+          "jenkins-jack.pipeline.browserSharedLibraryRef": {
+            "type": "boolean",
+            "default": false,
+            "markdownDescription": "Show Pipeline Shared Library documentation via browser instead of within vscode as markdown"
+          },
+          "jenkins-jack.snippets.enabled": {
+            "type": "boolean",
+            "default": true,
+            "markdownDescription": "Enable Pipeline step snippets for supported languageIds"
+          },
+          "jenkins-jack.tree.directorySeparator": {
+            "type": "string",
+            "default": "/",
+            "markdownDescription": "Directory separator string for job names in the Jenkins Jack TreeViews (default is `/`)"
+          },
+          "jenkins-jack.pipeline.tree.items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "hostId": {
+                  "type": "string",
+                  "default": null,
+                  "description": "The job name, including folder paths."
+                },
+                "jobName": {
+                  "type": "string",
+                  "default": "",
+                  "description": "The job name, including folder paths."
+                },
+                "filepath": {
+                  "type": "string",
+                  "default": null,
+                  "description": "The local file path of the pipeline script."
+                }
+              }
+            },
+            "default": [],
+            "markdownDescription": "Remote jenkins job to local pipeline script associations"
+          }
+        }
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.jenkins-jack.jacks",
+        "title": "jenkins-deploy",
+        "key": "ctrl+shift+j"
+      }
+    ],
+    "commands": [
+      {
+        "command": "extension.jenkins-jack.jacks",
+        "title": "Jacks",
+        "category": "Jenkins Jack"
+      },
+      {
+        "command": "extension.jenkins-jack.pipeline",
+        "title": "Pipeline Jack",
+        "category": "Jenkins Jack: Pipeline"
+      },
+      {
+        "command": "extension.jenkins-jack.pipeline.execute",
+        "title": "Execute",
+        "category": "Jenkins Jack: Pipeline",
+        "icon": {
+          "light": "images/pipeline-execute-light.svg",
+          "dark": "images/pipeline-execute-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.pipeline.sharedLibrary",
+        "title": "Shared Library Reference",
+        "category": "Jenkins Jack: Pipeline"
+      },
+      {
+        "command": "extension.jenkins-jack.pipeline.create",
+        "title": "Create",
+        "category": "Jenkins Jack: Pipeline",
+        "icon": {
+          "light": "images/add-light.svg",
+          "dark": "images/add-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.history.create",
+        "title": "Create",
+        "category": "Jenkins Jack: History",
+        "icon": {
+          "light": "images/add-light.svg",
+          "dark": "images/add-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.tree.pipeline.openScript",
+        "title": "Open script",
+        "category": "Jenkins Jack: Pipeline",
+        "icon": {
+          "light": "images/pipeline-open-script-light.svg",
+          "dark": "images/pipeline-open-script-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.tree.pipeline.openScriptConfig",
+        "title": "Open script config",
+        "category": "Jenkins Jack: Pipeline"
+      },
+      {
+        "command": "extension.jenkins-jack.tree.pipeline.pullJobScript",
+        "title": "Pull Job Script",
+        "category": "Jenkins Jack: Pipeline Tree"
+      },
+      {
+        "command": "extension.jenkins-jack.tree.pipeline.pullReplayScript",
+        "title": "Pull Replay Script",
+        "category": "Jenkins Jack: Pipeline Tree"
+      },
+      {
+        "command": "extension.jenkins-jack.tree.pipeline.refresh",
+        "title": "Refresh",
+        "category": "Jenkins Jack: Pipeline Tree",
+        "icon": {
+          "light": "images/refresh-light.svg",
+          "dark": "images/refresh-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.tree.pipeline.addLink",
+        "title": "Add Script Link",
+        "category": "Jenkins Jack: Pipeline Tree"
+      },
+      {
+        "command": "extension.jenkins-jack.tree.pipeline.removeLink",
+        "title": "Delete Script Link",
+        "category": "Jenkins Jack: Pipeline Tree"
+      },
+      {
+        "command": "extension.jenkins-jack.scriptConsole",
+        "title": "Script Console Jack",
+        "category": "Jenkins Jack: Script Console"
+      },
+      {
+        "command": "extension.jenkins-jack.scriptConsole.execute",
+        "title": "Execute Script Console",
+        "category": "Jenkins Jack: Script Console"
+      },
+      {
+        "command": "extension.jenkins-jack.build",
+        "title": "Jenkins 构建",
+        "category": "Jenkins Jack"
+      },
+      {
+        "command": "extension.jenkins-jack.build.abort",
+        "title": "终止",
+        "category": "Jenkins Jack: Build"
+      },
+      {
+        "command": "extension.jenkins-jack.build.open",
+        "title": "打开 Jenkins",
+        "category": "Jenkins Jack: Build",
+        "icon": {
+          "light": "images/open-light.svg",
+          "dark": "images/open-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.build.delete",
+        "title": "删除",
+        "category": "Jenkins Jack: Build"
+      },
+      {
+        "command": "extension.jenkins-jack.build.quickBuild",
+        "title": "快速构建",
+        "category": "Jenkins Jack: Build"
+      },
+      {
+        "command": "extension.jenkins-jack.build.downloadLog",
+        "title": "下载日志",
+        "category": "Jenkins Jack: Build",
+        "icon": {
+          "light": "images/build-log-light.svg",
+          "dark": "images/build-log-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.build.downloadReplayScript",
+        "title": "Download Replay Script",
+        "category": "Jenkins Jack: Build"
+      },
+      {
+        "command": "extension.jenkins-jack.build.branch",
+        "title": "构建",
+        "category": "Jenkins Jack: Build"
+      },
+      {
+        "command": "extension.jenkins-jack.node",
+        "title": "Node Jack",
+        "category": "Jenkins Jack"
+      },
+      {
+        "command": "extension.jenkins-jack.node.setOffline",
+        "title": "Set Offline",
+        "category": "Jenkins Jack: Node"
+      },
+      {
+        "command": "extension.jenkins-jack.node.setOnline",
+        "title": "Set Online",
+        "category": "Jenkins Jack: Node"
+      },
+      {
+        "command": "extension.jenkins-jack.node.disconnect",
+        "title": "Disconnect",
+        "category": "Jenkins Jack: Node"
+      },
+      {
+        "command": "extension.jenkins-jack.node.open",
+        "title": "Open",
+        "category": "Jenkins Jack: Node",
+        "icon": {
+          "light": "images/open-light.svg",
+          "dark": "images/open-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.node.updateLabels",
+        "title": "Update Labels",
+        "category": "Jenkins Jack: Node"
+      },
+      {
+        "command": "extension.jenkins-jack.tree.node.refresh",
+        "title": "Refresh",
+        "category": "Jenkins Jack: Node Tree",
+        "icon": {
+          "light": "images/refresh-light.svg",
+          "dark": "images/refresh-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.history",
+        "title": "History Jack",
+        "category": "Jenkins Jack"
+      },
+      {
+        "command": "extension.jenkins-jack.history.delete",
+        "title": "删除",
+        "category": "Jenkins Jack: History"
+      },
+      {
+        "command": "extension.jenkins-jack.history.disable",
+        "title": "Disable",
+        "category": "Jenkins Jack: History"
+      },
+      {
+        "command": "extension.jenkins-jack.history.enable",
+        "title": "Enable",
+        "category": "Jenkins Jack: History"
+      },
+      {
+        "command": "extension.jenkins-jack.history.open",
+        "title": "打开项目",
+        "category": "Jenkins Jack: History",
+        "icon": {
+          "light": "images/open-light.svg",
+          "dark": "images/open-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.history.moveup",
+        "title": "向上移动",
+        "category": "Jenkins Jack: History",
+        "icon": {
+          "light": "images/open-light.svg",
+          "dark": "images/open-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.history.movedown",
+        "title": "向下移动",
+        "category": "Jenkins Jack: History",
+        "icon": {
+          "light": "images/build-unstable-light.svg",
+          "dark": "images/build-unstable-light.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.tree.history.refresh",
+        "title": "Refresh",
+        "category": "Jenkins Jack: History Tree",
+        "icon": {
+          "light": "images/refresh-light.svg",
+          "dark": "images/refresh-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.historyBuild",
+        "title": "HistoryBuild",
+        "category": "Jenkins Jack: HistoryBuild"
+      },
+      {
+        "command": "extension.jenkins-jack.historyBuild.open",
+        "title": "打开项目",
+        "category": "Jenkins Jack: HistoryBuild",
+        "icon": {
+          "light": "images/open-light.svg",
+          "dark": "images/open-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.tree.historyBuild.refresh",
+        "title": "Refresh",
+        "category": "Jenkins Jack: HistoryBuild",
+        "icon": {
+          "light": "images/refresh-light.svg",
+          "dark": "images/refresh-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.historyBuild.build",
+        "title": "构建",
+        "category": "Jenkins Jack: HistoryBuild",
+        "icon": {
+          "light": "images/open-light.svg",
+          "dark": "images/open-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.historyBuild.delete",
+        "title": "删除",
+        "category": "Jenkins Jack: HistoryBuild"
+      },
+      {
+        "command": "extension.jenkins-jack.history.add",
+        "title": "添加 Jenkins 项目",
+        "category": "Jenkins Jack: History Tree",
+        "icon": {
+          "light": "images/add-light.svg",
+          "dark": "images/add-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.history.moveup",
+        "title": "向上移动",
+        "category": "Jenkins Jack: History"
+      },
+      {
+        "command": "extension.jenkins-jack.history.movedown",
+        "title": "向下移动",
+        "category": "Jenkins Jack: History"
+      },
+      {
+        "command": "extension.jenkins-jack.job",
+        "title": "Job Jack",
+        "category": "Jenkins Jack"
+      },
+      {
+        "command": "extension.jenkins-jack.job.addHistory",
+        "title": "添加常用构建列表",
+        "category": "Jenkins Jack: Job"
+      },
+      {
+        "command": "extension.jenkins-jack.job.disable",
+        "title": "Disable",
+        "category": "Jenkins Jack: Job"
+      },
+      {
+        "command": "extension.jenkins-jack.job.enable",
+        "title": "Enable",
+        "category": "Jenkins Jack: Job"
+      },
+      {
+        "command": "extension.jenkins-jack.job.open",
+        "title": "打开Jenkins",
+        "category": "Jenkins Jack: Job",
+        "icon": {
+          "light": "images/open-light.svg",
+          "dark": "images/open-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.job.build",
+        "title": "构建",
+        "category": "Jenkins Jack: Job",
+        "icon": {
+          "light": "images/open-light.svg",
+          "dark": "images/open-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.tree.job.refresh",
+        "title": "Refresh",
+        "category": "Jenkins Jack: Job Tree",
+        "icon": {
+          "light": "images/refresh-light.svg",
+          "dark": "images/refresh-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.connections.select",
+        "title": "Select",
+        "category": "Jenkins Jack: Connections"
+      },
+      {
+        "command": "extension.jenkins-jack.connections.add",
+        "title": "Add",
+        "category": "Jenkins Jack: Connections",
+        "icon": {
+          "light": "images/add-light.svg",
+          "dark": "images/add-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.connections.edit",
+        "title": "Edit",
+        "category": "Jenkins Jack: Connections"
+      },
+      {
+        "command": "extension.jenkins-jack.connections.delete",
+        "title": "Delete",
+        "category": "Jenkins Jack: Connections"
+      },
+      {
+        "command": "extension.jenkins-jack.tree.connections.settings",
+        "title": "Settings JSON",
+        "category": "Jenkins Jack: Connections Tree",
+        "icon": {
+          "light": "images/treeview-settings-light.svg",
+          "dark": "images/treeview-settings-dark.svg"
+        }
+      },
+      {
+        "command": "extension.jenkins-jack.tree.connections.refresh",
+        "title": "Refresh",
+        "category": "Jenkins Jack: Connections Tree",
+        "icon": {
+          "light": "images/refresh-light.svg",
+          "dark": "images/refresh-dark.svg"
+        }
+      }
+    ],
+    "languages": [
+      {
+        "id": "pipeline-log",
+        "aliases": [
+          "Pipeline Log"
+        ],
+        "extensions": [
+          ".pipelinelog"
+        ],
+        "mimetypes": [
+          "text/x-code-output",
+          "x-code-output"
+        ]
+      }
+    ],
+    "grammars": [
+      {
+        "language": "pipeline-log",
+        "scopeName": "source.pipelinelog",
+        "path": "./syntaxes/pipelinelog.tmGrammer.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.29",
+    "@types/jenkins": "^0.23.1",
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^8.10.25",
+    "@types/open": "^6.1.0",
+    "@types/request-promise-native": "^1.0.15",
+    "@types/xml2js": "0.4.3",
+    "tslint": "^5.8.0",
+    "typescript": "^4.3.3",
+    "vscode": "^1.1.37"
+  },
+  "dependencies": {
+    "@types/url-parse": "^1.4.3",
+    "cheerio": "^1.0.0-rc.10",
+    "jenkins": "^0.28.1",
+    "node-async-jenkins-api": "^1.3.0",
+    "open": "^6.2.0",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7",
+    "url-parse": "^1.4.7",
+    "xml2js": "0.4.3"
+  }
+}

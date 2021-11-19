@@ -1,0 +1,20 @@
+#!/usr/bin/env groovy
+
+@Library('tools')_
+
+pipeline {
+    agent none
+    stages {
+        stage ('Build') {
+            agent any
+
+            steps {
+                sh  '''
+                    npm upgrade
+                    npm install
+                    npm run vscode:prepublish
+                    '''
+            }
+        }
+    }
+}
